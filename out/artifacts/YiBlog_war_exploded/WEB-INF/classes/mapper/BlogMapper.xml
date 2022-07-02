@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.BlogMapper">
+    <insert id="addBlog" parameterType="Blog">
+        insert into blogtable (id, senderid, content, time, replyto) values (null, #{senderid}, #{content}, #{time}, #{replyto})
+    </insert>
+    <delete id="deleteBlogById" parameterType="Integer">
+        delete from blogtable where id=#{id}
+    </delete>
+    <select id="findAllBlogs" resultType="Blog">
+        select * from blogtable
+    </select>
+    <select id="findBlogById" parameterType="Integer" resultType="Blog">
+        select * from blogtable where id=#{id}
+    </select>
+</mapper>
